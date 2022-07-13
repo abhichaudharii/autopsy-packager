@@ -77,7 +77,7 @@ jobs:
             -v "${PACKAGE_AUTOPSY_BIN_VERSION}" \
             --iteration "$PACKAGE_SLEUTHKIT_JAVA_REL" \
             --no-auto-depends \
-            -d "bellsoft-java8-full" \
+            -d "openjdk-8-jdk" \
             -d "sleuthkit-java (>= ${PACKAGE_SLEUTHKIT_JAVA_VERSION})" \
             -d "testdisk" \
             -d "imagemagick" \
