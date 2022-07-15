@@ -22,7 +22,12 @@ jobs:
         run: |
           pacman -Syu --noconfirm
           pacman -S git --noconfirm --needed --noprogressbar
-          pacman -S jdk8-openjdk --noconfirm --needed --noprogressbar
+          pacman -S git --noconfirm ant java-environment=8 sleuthkit --needed --noprogressbar
+      - name: Getting java-fix dependency from archive
+        run: |
+          wget https://archive.org/download/archlinux_pkg_java8-openjfx/java8-openjfx-8.u202-4-x86_64.pkg.tar.zst -O $HOME/java8-openjfx-8
+          cd $HOME/java8-openjfx-8
+          sudo pacman -U java8-openjfx-8.u202-4-x86_64.pkg.tar.zst
       - name: Clone sleuthkit-java build repo from AUR
         run: |
           git clone https://aur.archlinux.org/sleuthkit-java.git $HOME/sleuthkit-java
@@ -32,6 +37,8 @@ jobs:
         with:
           PKGBUILD: $HOME/sleuthkit-java/PKGBUILD
           OUTDIR: /tmp/artifacts
+      - name: INstalling sleuthkit-java
+          pacman -U /tmp/artifacts/*.pkg.tar.zst
       - uses: actions/upload-artifact@v3
         with:
           name: arch-packages
@@ -78,7 +85,7 @@ jobs:
             -v "${PACKAGE_AUTOPSY_BIN_VERSION}" \
             --iteration "$PACKAGE_SLEUTHKIT_JAVA_REL" \
             --no-auto-depends \
-            -d "openjdk-8-jdk" \
+            -d "bellsoft-java8-full" \
             -d "sleuthkit-java (>= ${PACKAGE_SLEUTHKIT_JAVA_VERSION})" \
             -d "testdisk" \
             -d "imagemagick" \
