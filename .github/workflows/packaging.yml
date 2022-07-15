@@ -46,9 +46,9 @@ jobs:
           (cd $HOME/autopsy-bin; git checkout $PACKAGE_AUTOPSY_BIN_SHA)
       - name: Build autopsy-bin
         uses: FFY00/build-arch-package@v1
-          with:
-            PKGBUILD: $HOME/autopsy-bin/PKGBUILD
-            OUTDIR: /tmp/artifacts
+        with:
+          PKGBUILD: $HOME/autopsy-bin/PKGBUILD
+          OUTDIR: /tmp/artifacts
       - uses: actions/upload-artifact@v3
         with:
           name: arch-packages
