@@ -45,11 +45,10 @@ jobs:
           git clone https://aur.archlinux.org/autopsy-bin.git $HOME/autopsy-bin
           (cd $HOME/autopsy-bin; git checkout $PACKAGE_AUTOPSY_BIN_SHA)
       - name: Build autopsy-bin
-        run: |
-          chown user -R $HOME/autopsy-bin
-          cd $HOME/autopsy-bin
-          makepkg
-          mv *.pkg.* /tmp/artifacts
+        uses: FFY00/build-arch-package@v1
+          with:
+            PKGBUILD: $HOME/autopsy-bin/PKGBUILD
+            OUTDIR: /tmp/artifacts
       - uses: actions/upload-artifact@v3
         with:
           name: arch-packages
