@@ -22,8 +22,8 @@ jobs:
         run: |
           pacman -Syu --noconfirm
           pacman -S git --noconfirm --needed --noprogressbar
-          pacman -S git --noconfirm ant wget java-environment=8 sleuthkit --needed --noprogressbar
-      - name: Getting java-fix dependency from archive
+          pacman -S git --noconfirm ant wget java-environment=8 java-runtime=8 testdisk sleuthkit --needed --noprogressbar
+      - name: Installing java-fix dependency from archive
         run: |
           wget https://archive.org/download/archlinux_pkg_java8-openjfx/java8-openjfx-8.u202-4-x86_64.pkg.tar.zst -O $HOME/java8-openjfx-8.pkg.tar.zst
           pacman -U --noconfirm $HOME/java8-openjfx-8.pkg.tar.zst
@@ -82,7 +82,6 @@ jobs:
             -v "${PACKAGE_AUTOPSY_BIN_VERSION}" \
             --iteration "$PACKAGE_SLEUTHKIT_JAVA_REL" \
             --no-auto-depends \
-            -d "bellsoft-java8-full" \
             -d "sleuthkit-java (>= ${PACKAGE_SLEUTHKIT_JAVA_VERSION})" \
             -d "testdisk" \
             -d "imagemagick" \
