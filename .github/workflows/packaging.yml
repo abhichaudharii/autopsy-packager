@@ -26,7 +26,7 @@ jobs:
       - name: Getting java-fix dependency from archive
         run: |
           wget https://archive.org/download/archlinux_pkg_java8-openjfx/java8-openjfx-8.u202-4-x86_64.pkg.tar.zst -O $HOME/java8-openjfx-8.pkg.tar.zst
-          pacman -U $HOME/java8-openjfx-8.pkg.tar.zst
+          pacman -U --noconfirm $HOME/java8-openjfx-8.pkg.tar.zst
       - name: Clone sleuthkit-java build repo from AUR
         run: |
           git clone https://aur.archlinux.org/sleuthkit-java.git $HOME/sleuthkit-java
