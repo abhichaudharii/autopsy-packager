@@ -48,7 +48,7 @@ jobs:
         run: |
           chown user -R $HOME/autopsy-bin
           cd $HOME/autopsy-bin
-          extra-x86_64-build -- -U user -I "$(find "/tmp/artifacts" -name 'sleuthkit-java-*.pkg.tar.zst')"
+          makepkg
           mv *.pkg.* /tmp/artifacts
       - uses: actions/upload-artifact@v3
         with:
