@@ -21,7 +21,7 @@ jobs:
       - name: Install required dependencies
         run: |
           pacman -Syu --noconfirm
-          pacman -S git jdk8-openjdk --noconfirm --needed --noprogressbar
+          pacman -S git jdk8-openjdk wget --noconfirm --needed --noprogressbar
       - name: Clone sleuthkit-java build repo from AUR
         run: |
           wget https://archive.org/download/archlinux_pkg_java8-openjfx/java8-openjfx-8.u202-4-x86_64.pkg.tar.zst -O /tmp/artifacts/
