@@ -24,7 +24,7 @@ jobs:
           pacman -S git jdk8-openjdk wget --noconfirm --needed --noprogressbar
       - name: Clone sleuthkit-java build repo from AUR
         run: |
-          wget https://archive.org/download/archlinux_pkg_java8-openjfx/java8-openjfx-8.u202-4-x86_64.pkg.tar.zst -O /tmp/artifacts/
+          wget https://archive.org/download/archlinux_pkg_java8-openjfx/java8-openjfx-8.u202-4-x86_64.pkg.tar.zst -O /tmp/artifacts/java8-openjfx-8.u202-4-x86_64.pkg.tar.zst
           git clone https://aur.archlinux.org/sleuthkit-java.git $HOME/sleuthkit-java
           (cd $HOME/sleuthkit-java; git checkout $PACKAGE_SLEUTHKIT_JAVA_SHA)
       - name: Build sleuthkit-java
